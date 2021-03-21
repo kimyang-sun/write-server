@@ -5,7 +5,7 @@ const image = require('./image');
 const post = require('./post');
 const user = require('./user');
 
-const env = process.env.NODE_ENV || 'development'; // 기본값 development 모드
+const env = process.env.NODE_ENV || 'production'; // 기본값 development 모드
 const config = require('../config/config')[env];
 const db = {};
 
