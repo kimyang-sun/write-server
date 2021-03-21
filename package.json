@@ -22,9 +22,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kimyang-sun/write-server.git"
   }
 }
