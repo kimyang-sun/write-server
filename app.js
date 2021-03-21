@@ -49,10 +49,6 @@ app.use(
     saveUninitialized: false,
     resave: false,
     secret: process.env.COOKIE_SECRET,
-    cookie: {
-      httpOnly: true,
-      domain: '.write-mind.vercel.app',
-    },
   })
 );
 app.use(passport.initialize());
