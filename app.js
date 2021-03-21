@@ -31,7 +31,7 @@ passportConfig();
 
 app.use(
   cors({
-    origin: PORT,
+    origin: 'https://write-mind.vercel.app',
     credentials: true,
   })
 );
