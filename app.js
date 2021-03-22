@@ -41,10 +41,10 @@ app.use(
 // app.use('/', express.static(path.join(__dirname, 'uploads')));
 
 // 이 코드는 위에쪽에 있어야함.
+app.set('trust proxy', 1);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
-app.set('trust proxy', 1);
 app.use(
   session({
     saveUninitialized: true,
@@ -52,6 +52,7 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     cookie: {
       httpOnly: true,
+      domain: '.write-mind.vercel.app',
       sameSite: 'none',
       secure: true,
     },
