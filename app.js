@@ -59,7 +59,6 @@ app.use(cookieParser());
 //   })
 // );
 app.use(passport.initialize());
-app.use(passport.session());
 
 app.use('/user', userRouter);
 app.use('/post', postRouter);
