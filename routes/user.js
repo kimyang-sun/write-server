@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
+const jwt = require('jsonwebtoken');
 const { Op } = require('sequelize');
 const { User, Post, Image, Comment } = require('../models');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
@@ -87,8 +88,8 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
           { model: User, as: 'Followings', attributes: ['id'] },
         ],
       });
-
-      return res.status(200).json(userWithoutPassword); // 완료되면 유저정보를 프론트로 보내줌
+      const token = jwt.sign(userWithoutPassword, 'jwt-secret-key'); // 토큰 저장
+      return res.status(200).json(token); // 완료되면 유저정보를 프론트로 보내줌
     });
   })(req, res, next);
 });
@@ -96,7 +97,6 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
 // 로그아웃 - POST /user/logout
 router.post('/logout', isLoggedIn, (req, res) => {
   req.logout();
-  req.session.destroy();
   res.send('ok');
 });
 
