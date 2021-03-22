@@ -52,6 +52,8 @@ app.use(
     cookie: {
       httpOnly: true,
       domain: '.write-mind.vercel.app',
+      secure: true,
+      sameSite: 'none',
     },
   })
 );
