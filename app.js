@@ -52,7 +52,6 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     cookie: {
       httpOnly: true,
-      domain: '.write-mind.vercel.app',
       sameSite: 'none',
       secure: true,
     },
