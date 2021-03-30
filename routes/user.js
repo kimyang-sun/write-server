@@ -65,7 +65,7 @@ router.get('/', async (req, res, next) => {
 // 로그인 - POST /user/login
 router.post('/login', isNotLoggedIn, (req, res, next) => {
   console.log('login');
-  passport.authenticate('local', (err, user, info) => {
+  passport.authenticate('local', { session: false }, (err, user, info) => {
     if (err) {
       console.error(err);
       next(err);
