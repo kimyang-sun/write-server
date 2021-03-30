@@ -41,23 +41,10 @@ app.use(
 // app.use('/', express.static(path.join(__dirname, 'uploads')));
 
 // 이 코드는 위에쪽에 있어야함.
-app.set('trust proxy', 1);
+// app.set('trust proxy', 1);
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(
-//   session({
-//     saveUninitialized: false,
-//     resave: false,
-//     secret: process.env.COOKIE_SECRET,
-//     cookie: {
-//       httpOnly: true,
-//       domain: '.write-mind.vercel.app',
-//       sameSite: 'none',
-//       secure: true,
-//     },
-//   })
-// );
 app.use(passport.initialize());
 
 app.use('/user', userRouter);
