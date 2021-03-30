@@ -73,7 +73,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
     if (info) {
       return res.status(401).send(info.reason);
     }
-    return req.login(user, { session: false }, async loginErr => {
+    return req.login(user, async loginErr => {
       if (loginErr) {
         console.error(loginErr);
         return next(loginErr);
