@@ -65,7 +65,7 @@ router.get('/', async (req, res, next) => {
 // 로그인 - POST /user/login
 router.post('/login', isNotLoggedIn, (req, res, next) => {
   console.log('login');
-  passport.authenticate('local', (err, user, info) => {
+  passport.authenticate('local', { session: false }, (err, user, info) => {
     if (err) {
       console.error(err);
       next(err);
@@ -91,7 +91,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
       });
       const token = jwt.sign(userWithoutPassword, 'jwt-secret-key'); // 토큰 저장
       console.log(token);
-      return res.status(200).json(token); // 완료되면 유저정보를 프론트로 보내줌
+      return res.status(200).json({ token }); // 완료되면 유저정보를 프론트로 보내줌
     });
   })(req, res, next);
 });

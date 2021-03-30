@@ -29,6 +29,7 @@ const passportVerify = async (email, password, done) => {
 
 const JWTConfig = {
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+  // jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: 'jwt-secret-key',
 };
 const JWTVerify = async (jwtPayload, done) => {
